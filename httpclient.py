@@ -87,7 +87,7 @@ class HTTPClient(object):
                 buffer.extend(part)
             else:
                 done = not part
-        return buffer.decode('utf-8')
+        return buffer.decode('utf-8', 'ignore')
 
     def GET(self, url, args=None):
         code = 500
