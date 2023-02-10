@@ -117,6 +117,7 @@ class HTTPClient(object):
             path += self.create_query(args)
             if url.query != '':
                 path += '&' + url.query
+
         # address query if given in url
         else:
             if url.query != '':
@@ -173,6 +174,10 @@ class HTTPClient(object):
         path = url.path
         if path == None or path == "":
             path = '/'
+
+        # address query if given in url
+        if url.query != '':
+            path += '?' + url.query
 
         # connect
         self.connect(hostname, port)
