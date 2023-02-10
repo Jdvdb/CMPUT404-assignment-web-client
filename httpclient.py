@@ -113,7 +113,14 @@ class HTTPClient(object):
 
         # add query if given in args
         if type(args) is dict:
+            # handle if query parameters are also provided in url
             path += self.create_query(args)
+            if url.query != '':
+                path += '&' + url.query
+        # address query if given in url
+        else:
+            if url.query != '':
+                path += '?' + url.query
 
         # connect
         self.connect(hostname, port)
